@@ -41,33 +41,7 @@ jobs:
         echo "::set-output name=image::$ECR_REGISTRY/$ECR_REPOSITORY:$GITHUB_SHA"
     - name: Deploy on AWS EC2
       env:
-        PRIVATE_KEY: -----BEGIN RSA PRIVATE KEY-----
-MIIEpgIBAAKCAQEAuLJJtXE0JHqQawXltsPCK5xV4WqWU45ba49ScJv9LEfCOuL1
-M1A3+vPCQLy5v+Pj2lBdSzdmuJDLoL9FKGfTQ6dp++njJhaA5DZb0wSrhL9C2DRf
-rkZXgUEg7EbwuvCBJCMFAPpO2JUM8RxGbTTLdrqzNTIj6RdHChNgVNQXdHC5RQ8K
-k5LeroxFbQ8FqG5wbhpGOeTBiB/EZcNlwpmgjEAS2aEjlkSwXL2MJG/oNCUgmEH4
-O3N23iv5ngnJpnsfBnmB0+ewbPlpwISZpm5q7+uEY2Jmomwyo83x2QXPsD26D8gN
-EjeHNaFPME7H89dRX1bsKzJzt9fBj3x5noPYDQIDAQABAoIBAQClDyiST7YCt8oi
-6yVM/Yukv9V8W243BC0tZeuOGcnbbdHmIHhzwEgXLQs4IbF7DSXPMC0AEGXrofNp
-GCatIoSKnK455N8MZeYQjYfogO7r9qW9ZKjxrYl8SQEsR4XR+yfebLGHGyuloSbs
-v5Es/Zar59RKQSIYqKXjGkfn55eChcZ2oj56fFYBk26yl3+Tv/cSPZXPiGaIKJR6
-rDtyMUNdP/CoMymhv4nu+VgIe3Em13JPWDNubUxcs5rNvqs8QyOq5SqpdwVunQBj
-Hjyf0UcfcBmR+lSivgWxSqQQQKZCAU2T/TIdoPZMUAC4qR++SOaHyMfUyhLB/3Gc
-nOmmm/pBAoGBAPpdAwp2c/BO+uLo2KBuIxKkrpWnqsaMvaae/QwmmLshCOmLu8Cf
-hwhX7nXcdOBvai5ojNdqgFFJuOXCeiqkXlJWOTngIlaYj1mHrNk0kmj4wsT3Atls
-efXUubcajoPIkC3UZUS/u/OADvMuCWgNlDx+mBfDBGo9egwMei+gGHNdAoGBALza
-zMdxEcOIzRp5lx5digCX+nhBfqtEZhzn0faJUtA59DZlAX8kvDcex5mBZ1AEt8JM
-rzg91tL+8C8aujYdidCXcCqV7uNcs6yFX+7a2WKo+KeRCXJBRvLDpulQekQ48aBn
-B8nTmWHvvQ8HooD+haxYM3yXwxLzDyb+VzgWmdxxAoGBAPmkLRgNrOV9m2UO0JKH
-v6kjVIIdQYfhZmnyNlgbVEejVQOrNXeImliTdU9Il7IC5lmIHofdxj1HyXowRSin
-5PUszLsM5rB6RtX7Fzst1J+fDHbh5pFuPN4HU3dkn56AKmPIWYIHvR28HywUR4Td
-pWX8xSNMbeaRjlTdTCiY9khxAoGBAKjDif2sMCihJlBDWeT7x+fx6BTwykY4cFvi
-WYHLg6KqN28oYecBp+RF8C5gMjeSj7flGSvULxYMVgxyAPd8+/vYaJbVt02cOL+x
-zGHBVkPRJatwc5WTedhVOOIEVc6DaIFjsNUN72JSf4tf0jsdt8ykYRY09FEJvX+m
-B8EKiWIxAoGBANLE5Djnm/l4r17cbB+B64JqhVadsdCNQuI/IdnzveMp1KfCASwL
-6LH1UUyh4R2pGgdrniThmHGS9jc0PPD5/59GJ8iwU5tO8vQCCmHGvkoepy+yNRFY
-HEisIR02q80fpwKjIfQWEI225xW7Ybt8vxwko46O8B7aiedrpaujGORx
------END RSA PRIVATE KEY-----
+        PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY  }}
         HOSTNAME: ec2-65-0-100-183.ap-south-1.compute.amazonaws.com
         USER_NAME: ec2-user
         ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
