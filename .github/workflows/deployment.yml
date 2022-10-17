@@ -21,9 +21,9 @@ jobs:
     - name: Configure AWS credentials
       uses: aws-actions/configure-aws-credentials@v1
       with:
-        aws-access-key-id: AKIAUUHUAMRMUP5FWAHY
-        aws-secret-access-key: 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
-        aws-region: ap-south-1
+        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        aws-region: ${{ secrets.AWS_REGION }}
 
     - name: Login to Amazon ECR
       id: login-ecr
@@ -43,8 +43,8 @@ jobs:
     - name: Deploy on AWS EC2
       env:
         PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY  }}
-        HOSTNAME: ec2-65-0-100-183.ap-south-1.compute.amazonaws.com
-        USER_NAME: ec2-user
+        HOSTNAME: ${{ secrets.HOSTNAME  }}
+        USER_NAME: ${{ secrets.USERNAME  }}
         ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
       run: |
         echo "$PRIVATE_KEY" > private_key.pem && chmod 600 private_key.pem
